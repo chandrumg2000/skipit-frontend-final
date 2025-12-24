@@ -263,7 +263,7 @@ function PricingStellarToggle() {
         </div>
 
         {/* Cards */}
-        <div className="mt-12 grid gap-6 sm:gap-7 md:grid-cols-3">
+        <div className="mt-12 flex md:grid gap-6 sm:gap-7 md:grid-cols-3 overflow-x-auto md:overflow-visible pb-8 md:pb-0 snap-x snap-mandatory no-scrollbar px-1">
           {PLANS.map((p, i) => {
             const isPopular = !!p.popular;
             const yearlyTotal = Math.round(p.monthly * 12 * (1 - SAVE_RATE));
@@ -277,6 +277,7 @@ function PricingStellarToggle() {
                 transition={{ duration: 0.35, ease: 'easeOut', delay: i * 0.06 }}
                 className={[
                   'relative flex flex-col overflow-hidden rounded-2xl border p-6 md:p-8',
+                  'flex-shrink-0 w-[85vw] md:w-auto snap-center',
                   'bg-white/[0.02] backdrop-blur',
                   'border-white/10 transition-all duration-300',
                   isPopular

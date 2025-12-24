@@ -34,7 +34,7 @@ export default function Testimonials() {
         <h2 className="text-4xl font-extrabold mb-4">What Our Clients Say</h2>
         <p className="text-lg text-gray-400">Real results. Real impact.</p>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto">
+      <div className="flex md:grid md:grid-cols-3 gap-6 md:gap-10 max-w-6xl mx-auto overflow-x-auto md:overflow-visible pb-8 md:pb-0 snap-x snap-mandatory no-scrollbar px-1">
         {testimonials.map((testimonial, index) => (
           <motion.div
             key={index}
@@ -42,7 +42,7 @@ export default function Testimonials() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.15 }}
-            className="bg-white/5 border border-white/10 rounded-2xl p-6 shadow-xl backdrop-blur-lg hover:shadow-neon"
+            className="flex-shrink-0 w-[85vw] md:w-auto snap-center bg-white/5 border border-white/10 rounded-2xl p-6 shadow-xl backdrop-blur-lg hover:shadow-neon"
           >
             <div className="flex items-center gap-4 mb-4">
               <Image
@@ -57,7 +57,7 @@ export default function Testimonials() {
                 <p className="text-xs text-gray-400">{testimonial.title}</p>
               </div>
             </div>
-            <p className="text-sm text-gray-300 leading-relaxed">{testimonial.quote}</p>
+            <p className="text-sm text-gray-300 leading-relaxed whitespace-normal">{testimonial.quote}</p>
           </motion.div>
         ))}
       </div>
