@@ -250,6 +250,9 @@ function PricingStellarToggle() {
                 )}
               </AnimatePresence>
             </div>
+            <p className="md:hidden text-xs text-slate-500 flex items-center justify-center gap-1">
+              <span className="animate-pulse">←</span> Swipe cards <span className="animate-pulse">→</span>
+            </p>
 
             <motion.div
               className="mx-auto mt-6 h-[1px] w-28 rounded-full"
