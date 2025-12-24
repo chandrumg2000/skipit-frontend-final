@@ -94,15 +94,15 @@ export default function Navbar() {
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
-                        className="fixed inset-0 z-40 bg-[#0b1020] pt-24 px-6 md:hidden"
+                        className="fixed inset-0 z-40 bg-[#0b1020] pt-20 px-6 md:hidden overflow-y-auto"
                     >
-                        <div className="flex flex-col gap-6 text-center">
+                        <div className="flex flex-col gap-6 text-center pb-8">
                             {navLinks.map((link) => (
                                 <Link
                                     key={link.name}
                                     href={link.href}
                                     onClick={() => setMobileMenuOpen(false)}
-                                    className="text-2xl font-semibold text-slate-300 hover:text-cyan-400"
+                                    className="text-xl font-semibold text-slate-300 hover:text-cyan-400 py-2"
                                 >
                                     {link.name}
                                 </Link>
@@ -110,7 +110,7 @@ export default function Navbar() {
                             <Link
                                 href="/contact"
                                 onClick={() => setMobileMenuOpen(false)}
-                                className="mt-4 inline-flex w-full items-center justify-center rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-4 text-lg font-bold text-white"
+                                className="mt-2 inline-flex w-full items-center justify-center rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-3 text-base font-bold text-white shadow-lg shadow-cyan-500/20"
                             >
                                 Get Started
                             </Link>

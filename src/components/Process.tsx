@@ -118,8 +118,8 @@ export default function ProcessJourneyInline() {
           <h2 className="text-[2.25rem] md:text-5xl font-semibold tracking-tight text-white">Our Process</h2>
         </div>
 
-        {/* INLINE STAGE ROW */}
-        <div ref={containerRef} className="mt-8">
+        {/* INLINE STAGE ROW (Desktop Only) */}
+        <div ref={containerRef} className="mt-8 hidden lg:block">
           <div className="relative">
             {/* Row of stages (icons + labels) */}
             <ul className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
@@ -169,9 +169,9 @@ export default function ProcessJourneyInline() {
           </div>
         </div>
 
-        {/* ROCKET + CONTENT */}
+        {/* ROCKET + CONTENT (Desktop Only) */}
         {/* Increased top margin so the rocket sits further below the line */}
-        <div className="mt-16 grid gap-10 lg:grid-cols-[420px_1fr] items-start">
+        <div className="mt-16 hidden lg:grid gap-10 lg:grid-cols-[420px_1fr] items-start">
           {/* ROCKET (standalone, lowered) */}
           <div className="relative h-[260px]">
             {/* subtle stars - Dark Mode Only */}

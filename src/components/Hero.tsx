@@ -31,7 +31,7 @@ export default function Hero({ setShowModal }: Props) {
       <AIWave />
 
       {/* Content */}
-      <div className="relative z-10 mx-auto max-w-7xl px-6 pt-32 pb-16 sm:pt-40 md:pt-48 md:pb-24">
+      <div className="relative z-10 mx-auto max-w-7xl px-6 pt-24 pb-12 sm:pt-32 md:pt-48 md:pb-24">
         {/* Micro badge */}
         <motion.div
           initial={{ y: -8, opacity: 0 }}
@@ -50,7 +50,7 @@ export default function Hero({ setShowModal }: Props) {
           initial={{ y: 14, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.55, ease: 'easeOut' }}
-          className="mx-auto max-w-6xl text-center text-[2.4rem] font-extrabold leading-[1.07] tracking-tight sm:text-6xl md:text-[4.25rem] text-white"
+          className="mx-auto max-w-6xl text-center text-4xl font-extrabold leading-[1.1] tracking-tight sm:text-6xl md:text-[4.25rem] text-white"
         >
           Grow Faster with{' '}
           <span className="relative inline-block">
