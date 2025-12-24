@@ -1,5 +1,5 @@
-import googleAds from '../assets/googleads.json';
-import metaAds from '../assets/metaads.json';
+import googleAds from '@/assets/googleads.json';
+import metaAds from '@/assets/metaads.json';
 import seo from '@/assets/seo.json';
 import social from '@/assets/social.json';
 import saas from '@/assets/saas.json';
