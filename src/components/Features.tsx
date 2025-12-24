@@ -33,8 +33,8 @@ const features = [
 
 export default function Features() {
   return (
-    <section className="py-20 px-6 bg-[#0f172a] text-white text-center">
-      <h2 className="text-4xl font-bold mb-12">AI-Powered Features</h2>
+    <section id="features" className="py-20 px-6 bg-[#0f172a] text-white text-center">
+      <h2 className="text-4xl font-bold mb-12 text-white">AI-Powered Features</h2>
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10 max-w-7xl mx-auto">
         {features.map((feature, idx) => (
           <motion.div
@@ -45,7 +45,7 @@ export default function Features() {
             <div className="mb-4 flex justify-center">{feature.icon}</div>
             <h3 className="text-2xl font-semibold mb-2 text-cyan-300">{feature.title}</h3>
             <p className="text-gray-400">{feature.description}</p>
-            <div className="absolute inset-0 rounded-2xl pointer-events-none z-[-1] bg-gradient-to-br from-cyan-500/10 to-blue-500/5 blur-2xl" />
+            <div className="absolute inset-0 rounded-2xl pointer-events-none z-[-1] bg-gradient-to-br from-cyan-500/10 to-blue-500/5 blur-2xl opacity-100" />
           </motion.div>
         ))}
       </div>
