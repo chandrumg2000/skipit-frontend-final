@@ -30,9 +30,21 @@ const testimonials = [
 export default function Testimonials() {
   return (
     <section className="py-24 px-6 bg-[#0f172a] text-white relative z-10">
-      <div className="max-w-6xl mx-auto text-center mb-14">
+      <div className="max-w-6xl mx-auto text-center mb-10 md:mb-14 px-6 md:px-0">
         <h2 className="text-4xl font-extrabold mb-4">What Our Clients Say</h2>
-        <p className="text-lg text-gray-400">Real results. Real impact.</p>
+        <div className="flex items-center justify-center gap-2 text-lg text-gray-400">
+          <span>Real results. Real impact.</span>
+          <span className="md:hidden flex animate-pulse text-cyan-400">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            {/* Simple arrow or hand icon could be better, trying a simple text hint first or an SVG arrow */}
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="ml-1 opacity-80" >
+              <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </span>
+        </div>
+        <p className="md:hidden text-xs text-slate-500 mt-2 flex items-center justify-center gap-1">
+          <span className="animate-pulse">←</span> Swipe to explore <span className="animate-pulse">→</span>
+        </p>
       </div>
       <div className="flex md:grid md:grid-cols-3 gap-6 md:gap-10 max-w-6xl mx-auto overflow-x-auto md:overflow-visible pb-8 md:pb-0 snap-x snap-mandatory no-scrollbar px-1">
         {testimonials.map((testimonial, index) => (
