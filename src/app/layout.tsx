@@ -16,6 +16,61 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "AI-Powered Digital Marketing Agency for Scalable Growth | SkipIt Digital",
   description: "SkipIt Digital is an AI-driven digital marketing agency helping brands scale with Google Ads, Meta Ads, SEO, and SaaS growth strategies. Get results, faster.",
+  metadataBase: new URL('https://skipitdigital.com'),
+  openGraph: {
+    title: "AI-Powered Digital Marketing Agency | SkipIt Digital",
+    description: "Scale your business with AI-driven ads, SEO, and growth strategies.",
+    url: 'https://skipitdigital.com',
+    siteName: 'SkipIt Digital',
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "SkipIt Digital | AI Marketing Agency",
+    description: "Scale with AI-driven Google Ads, Meta Ads, and SEO.",
+  },
+  icons: {
+    icon: '/icon.png',
+  },
+  alternates: {
+    canonical: '/',
+  },
+};
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'SkipIt Digital',
+  image: 'https://skipitdigital.com/icon.png',
+  '@id': 'https://skipitdigital.com',
+  url: 'https://skipitdigital.com',
+  telephone: '', // Add phone number if available
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Chennai',
+    addressLocality: 'Chennai',
+    addressRegion: 'TN',
+    postalCode: '600001',
+    addressCountry: 'IN'
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 13.0827,
+    longitude: 80.2707
+  },
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    opens: '09:00',
+    closes: '18:00'
+  }
 };
 
 import Navbar from "@/components/Navbar";
@@ -30,6 +85,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#0b1020] text-white`}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <Navbar />
         {children}
       </body>
