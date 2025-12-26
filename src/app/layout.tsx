@@ -73,6 +73,7 @@ const jsonLd = {
 };
 
 import Navbar from "@/components/Navbar";
+import ChennaiPopup from "@/components/ChennaiPopup";
 
 export default function RootLayout({
   children,
@@ -110,6 +111,7 @@ export default function RootLayout({
         />
         <Navbar />
         {children}
+        <ChennaiPopup />
       </body>
     </html>
   );

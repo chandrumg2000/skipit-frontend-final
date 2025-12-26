@@ -118,20 +118,70 @@ const STUDIES: Study[] = [
     heroSrc: '/images/case-studies/local-hero.jpg',
     heroAlt: 'Service team',
   },
+  {
+    id: 'real-estate-1',
+    title: 'High-Ticket Real Estate Lead Gen',
+    category: 'Local / Services',
+    summary: 'Generated qualified buyer leads for a luxury developer using geo-fenced Meta Ads and search intent.',
+    actions: [
+      'Geo-fenced FB/IG campaigns targeting HNI areas',
+      'Google Search for high-intent luxury keywords',
+      'WhatsApp lead nurture automation',
+      'Virtual tour video creatives',
+    ],
+    metrics: [
+      { label: 'Leads', value: '+210%', icon: Users },
+      { label: 'CPL', value: '-35%', icon: TrendingUp },
+      { label: 'Sales', value: '+$12M', icon: Rocket },
+    ],
+    highlightBadge: '↑ Sales +$12M',
+    testimonial: {
+      quote: 'Sold 12 luxury units in 3 months. Lead quality was superior to portal inquiries.',
+      author: 'Sarah J.',
+      role: 'Marketing Director, LuxeSpaces',
+    },
+    heroSrc: '/images/case-studies/real-estate-hero.jpg',
+    heroAlt: 'Luxury real estate',
+  },
+  {
+    id: 'saas-health',
+    title: 'Scaling Telehealth App Adoption',
+    category: 'SaaS',
+    summary: 'Doubled active patient users for a healthcare app via trust-based content and app store ads.',
+    actions: [
+      'Apple Search Ads (ASA) aggressive scaling',
+      'Trust-based video ads with doctor testimonials',
+      'Retargeting churned sign-ups via email/SMS',
+      'App store page A/B testing (CRO)',
+    ],
+    metrics: [
+      { label: 'Installs', value: '+18K', icon: Rocket },
+      { label: 'CPI', value: '-12%', icon: TrendingUp },
+      { label: 'MAU', value: '+115%', icon: Users },
+    ],
+    highlightBadge: '↑ MAU +115%',
+    testimonial: {
+      quote: 'Patient intake volume doubled without adding support headcount. Efficient growth.',
+      author: 'Dr. Arun P.',
+      role: 'Founder, HealthFirst',
+    },
+    heroSrc: '/images/case-studies/health-hero.jpg',
+    heroAlt: 'Health app dashboard',
+  },
 ];
 
 const filters = ['All', 'SaaS', 'E-commerce', 'Local / Services'] as const;
 type Filter = (typeof filters)[number];
 
 const cardVariants: Variants = {
-  initial: { y: 18, opacity: 0 },
+  initial: { opacity: 0, x: 20 },
   animate: (i: number) => ({
-    y: 0,
     opacity: 1,
+    x: 0,
     transition: {
-      delay: i * 0.06,
-      duration: 0.35,
-      ease: [0.22, 0.61, 0.36, 1],
+      delay: i * 0.1,
+      duration: 0.5,
+      ease: [0.22, 1, 0.36, 1],
     },
   }),
 };
@@ -143,7 +193,7 @@ export default function CaseStudiesSection() {
   return (
     <section
       id="case-studies"
-      className="relative py-24 md:py-28 text-white bg-[#0b1220]"
+      className="relative py-24 md:py-28 text-white bg-[#0b1220] overflow-hidden"
     >
       {/* backdrop glow */}
       <div className="pointer-events-none absolute inset-0 -z-10">
@@ -180,8 +230,8 @@ export default function CaseStudiesSection() {
           ))}
         </div>
 
-        {/* Grid */}
-        <div className="mt-12 grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {/* Horizontal Slider Container */}
+        <div className="mt-12 flex gap-6 overflow-x-auto pb-8 snap-x snap-mandatory no-scrollbar px-1">
           {visible.map((s, i) => (
             <motion.article
               key={s.id}
@@ -189,11 +239,12 @@ export default function CaseStudiesSection() {
               variants={cardVariants}
               initial="initial"
               whileInView="animate"
-              viewport={{ once: true, amount: 0.2 }}
+              viewport={{ once: true, amount: 0.1 }}
               className={[
-                'relative flex flex-col rounded-2xl p-6 md:p-8',
+                'relative flex flex-col flex-shrink-0 snap-center rounded-2xl p-6 md:p-8',
+                'w-[90vw] md:w-[450px]', // Fixed width for slider items
                 'border border-white/10 bg-white/[0.02] backdrop-blur',
-                'transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-cyan-500/10',
+                'transition-all hover:border-cyan-500/30', // Removed hover transform to avoid scroll glitches
                 s.featured ? 'ring-1 ring-cyan-300/60' : '',
               ].join(' ')}
             >
