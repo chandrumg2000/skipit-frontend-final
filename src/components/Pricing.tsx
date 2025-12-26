@@ -265,140 +265,141 @@ function PricingStellarToggle() {
               transition={{ duration: 0.45, ease: 'easeInOut' }}
             />
           </div>
+        </div>
 
-          {/* Cards */}
-          <div className="mt-12 flex md:grid gap-6 sm:gap-7 md:grid-cols-3 overflow-x-auto md:overflow-visible pb-8 md:pb-0 snap-x snap-mandatory no-scrollbar px-1">
-            {PLANS.map((p, i) => {
-              const isPopular = !!p.popular;
-              const yearlyTotal = Math.round(p.monthly * 12 * (1 - SAVE_RATE));
-              const perMonthYearly = Math.round(yearlyTotal / 12);
-              return (
-                <motion.article
-                  key={p.id + (yearly ? '-y' : '-m')}
-                  initial={{ y: 14, opacity: 0 }}
-                  whileInView={{ y: 0, opacity: 1 }}
-                  viewport={{ once: true, amount: 0.35 }}
-                  transition={{ duration: 0.35, ease: 'easeOut', delay: i * 0.06 }}
-                  className={[
-                    'relative flex flex-col overflow-hidden rounded-2xl border p-6 md:p-8',
-                    'flex-shrink-0 w-[85vw] md:w-auto snap-center',
-                    'bg-white/[0.02] backdrop-blur',
-                    'border-white/10 transition-all duration-300',
-                    isPopular
-                      ? yearly
-                        ? 'ring-1 ring-teal-300/50 shadow-[0_0_48px_rgba(56,189,248,0.22)]'
-                        : 'ring-1 ring-violet-400/50 shadow-[0_0_44px_rgba(139,92,246,0.22)]'
-                      : 'hover:shadow-[0_0_30px_rgba(148,163,184,0.08)]',
-                  ].join(' ')}
-                >
-                  {/* sheen */}
-                  <motion.div
-                    className="pointer-events-none absolute inset-x-0 -top-[2px] h-[3px] rounded-t-2xl"
-                    animate={{
-                      background: yearly
-                        ? 'linear-gradient(90deg, transparent, rgba(56,189,248,0.7), transparent)'
-                        : 'linear-gradient(90deg, transparent, rgba(139,92,246,0.7), transparent)',
-                    }}
-                    transition={{ duration: 0.5 }}
-                  />
+        {/* Cards */}
+        <div className="mt-12 flex md:grid gap-6 sm:gap-7 md:grid-cols-3 overflow-x-auto md:overflow-visible pb-8 md:pb-0 snap-x snap-mandatory no-scrollbar px-1">
+          {PLANS.map((p, i) => {
+            const isPopular = !!p.popular;
+            const yearlyTotal = Math.round(p.monthly * 12 * (1 - SAVE_RATE));
+            const perMonthYearly = Math.round(yearlyTotal / 12);
+            return (
+              <motion.article
+                key={p.id + (yearly ? '-y' : '-m')}
+                initial={{ y: 14, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                viewport={{ once: true, amount: 0.35 }}
+                transition={{ duration: 0.35, ease: 'easeOut', delay: i * 0.06 }}
+                className={[
+                  'relative flex flex-col overflow-hidden rounded-2xl border p-6 md:p-8',
+                  'flex-shrink-0 w-[85vw] md:w-auto snap-center',
+                  'bg-white/[0.02] backdrop-blur',
+                  'border-white/10 transition-all duration-300',
+                  isPopular
+                    ? yearly
+                      ? 'ring-1 ring-teal-300/50 shadow-[0_0_48px_rgba(56,189,248,0.22)]'
+                      : 'ring-1 ring-violet-400/50 shadow-[0_0_44px_rgba(139,92,246,0.22)]'
+                    : 'hover:shadow-[0_0_30px_rgba(148,163,184,0.08)]',
+                ].join(' ')}
+              >
+                {/* sheen */}
+                <motion.div
+                  className="pointer-events-none absolute inset-x-0 -top-[2px] h-[3px] rounded-t-2xl"
+                  animate={{
+                    background: yearly
+                      ? 'linear-gradient(90deg, transparent, rgba(56,189,248,0.7), transparent)'
+                      : 'linear-gradient(90deg, transparent, rgba(139,92,246,0.7), transparent)',
+                  }}
+                  transition={{ duration: 0.5 }}
+                />
 
-                  {isPopular && (
-                    <div
-                      className={[
-                        'mb-3 inline-flex w-fit items-center gap-1 rounded-full px-2.5 py-1 text-xs font-semibold ring-1',
-                        yearly ? 'bg-teal-500/15 text-teal-200 ring-teal-400/40' : 'bg-violet-500/15 text-violet-200 ring-violet-400/40',
-                      ].join(' ')}
-                    >
-                      <Star className="h-3.5 w-3.5" />
-                      Most popular
-                    </div>
-                  )}
+                {isPopular && (
+                  <div
+                    className={[
+                      'mb-3 inline-flex w-fit items-center gap-1 rounded-full px-2.5 py-1 text-xs font-semibold ring-1',
+                      yearly ? 'bg-teal-500/15 text-teal-200 ring-teal-400/40' : 'bg-violet-500/15 text-violet-200 ring-violet-400/40',
+                    ].join(' ')}
+                  >
+                    <Star className="h-3.5 w-3.5" />
+                    Most popular
+                  </div>
+                )}
 
-                  <h3 className="text-2xl font-semibold tracking-tight">{p.name}</h3>
-                  <p className="mt-2 text-sm text-slate-300">{p.blurb}</p>
+                <h3 className="text-2xl font-semibold tracking-tight">{p.name}</h3>
+                <p className="mt-2 text-sm text-slate-300">{p.blurb}</p>
 
-                  <motion.div layout className="mt-6 rounded-xl bg-white/[0.02] p-4 ring-1 ring-white/10">
-                    <div className="text-center">
-                      <AnimatePresence mode="wait" initial={false}>
-                        {!yearly ? (
-                          <motion.div
-                            key="m-price"
-                            initial={{ y: 8, opacity: 0 }}
-                            animate={{ y: 0, opacity: 1 }}
-                            exit={{ y: -8, opacity: 0 }}
-                            transition={{ duration: 0.25 }}
-                          >
-                            <span className="text-5xl font-bold md:text-6xl">{fmt(p.monthly)}</span>
-                            <span className="pl-1 text-lg font-normal text-slate-400">/Monthly</span>
-                          </motion.div>
-                        ) : (
-                          <motion.div
-                            key="y-price"
-                            initial={{ y: 8, opacity: 0 }}
-                            animate={{ y: 0, opacity: 1 }}
-                            exit={{ y: -8, opacity: 0 }}
-                            transition={{ duration: 0.25 }}
-                          >
-                            <div className="text-[15px] text-slate-300">Billed yearly — <span className="font-semibold">{fmt(yearlyTotal)}</span></div>
-                            <div className="mt-1">
-                              <span className="text-5xl font-bold md:text-6xl">{fmt(perMonthYearly)}</span>
-                              <span className="pl-1 text-lg font-normal text-slate-400">/mo effective</span>
-                            </div>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </div>
-
-                    <Link href={`/contact?plan=${p.id}`} className="w-full block">
-                      <motion.button
-                        layout
-                        className={[
-                          'mt-4 w-full rounded-lg py-3 text-sm font-bold',
-                          yearly
-                            ? 'bg-gradient-to-r from-teal-400 via-sky-400 to-cyan-400 text-black hover:brightness-110'
-                            : 'bg-gradient-to-r from-violet-500 via-fuchsia-500 to-cyan-400 text-black hover:brightness-110',
-                          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40',
-                        ].join(' ')}
-                      >
-                        {p.cta}
-                      </motion.button>
-                    </Link>
-
-                    <AnimatePresence>
-                      {yearly && (
+                <motion.div layout className="mt-6 rounded-xl bg-white/[0.02] p-4 ring-1 ring-white/10">
+                  <div className="text-center">
+                    <AnimatePresence mode="wait" initial={false}>
+                      {!yearly ? (
                         <motion.div
-                          initial={{ y: -6, opacity: 0 }}
+                          key="m-price"
+                          initial={{ y: 8, opacity: 0 }}
                           animate={{ y: 0, opacity: 1 }}
-                          exit={{ y: -6, opacity: 0 }}
+                          exit={{ y: -8, opacity: 0 }}
                           transition={{ duration: 0.25 }}
-                          className="mt-3 flex items-center justify-center gap-1 text-xs font-semibold text-emerald-200"
                         >
-                          <BadgePercent className="h-3.5 w-3.5" />
-                          You’re saving 17% vs monthly
+                          <span className="text-5xl font-bold md:text-6xl">{fmt(p.monthly)}</span>
+                          <span className="pl-1 text-lg font-normal text-slate-400">/Monthly</span>
+                        </motion.div>
+                      ) : (
+                        <motion.div
+                          key="y-price"
+                          initial={{ y: 8, opacity: 0 }}
+                          animate={{ y: 0, opacity: 1 }}
+                          exit={{ y: -8, opacity: 0 }}
+                          transition={{ duration: 0.25 }}
+                        >
+                          <div className="text-[15px] text-slate-300">Billed yearly — <span className="font-semibold">{fmt(yearlyTotal)}</span></div>
+                          <div className="mt-1">
+                            <span className="text-5xl font-bold md:text-6xl">{fmt(perMonthYearly)}</span>
+                            <span className="pl-1 text-lg font-normal text-slate-400">/mo effective</span>
+                          </div>
                         </motion.div>
                       )}
                     </AnimatePresence>
-                  </motion.div>
-
-                  <div className="my-6 h-px bg-white/10" />
-
-                  <ul className="space-y-3 text-[15px] leading-6">
-                    {p.features.map((f) => (
-                      <li key={f} className="flex items-start gap-3 text-slate-200">
-                        <CheckCircle2 className={`${yearly ? 'text-teal-300/90' : 'text-violet-300/90'} mt-0.5 h-4.5 w-4.5`} />
-                        <span>{f}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="pointer-events-none absolute right-3 top-3 opacity-70">
-                    <Sparkles className={`${yearly ? 'text-teal-300/60' : 'text-violet-300/60'} h-4 w-4`} />
                   </div>
-                </motion.article>
-              );
-            })}
-          </div>
+
+                  <Link href={`/contact?plan=${p.id}`} className="w-full block">
+                    <motion.button
+                      layout
+                      className={[
+                        'mt-4 w-full rounded-lg py-3 text-sm font-bold',
+                        yearly
+                          ? 'bg-gradient-to-r from-teal-400 via-sky-400 to-cyan-400 text-black hover:brightness-110'
+                          : 'bg-gradient-to-r from-violet-500 via-fuchsia-500 to-cyan-400 text-black hover:brightness-110',
+                        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40',
+                      ].join(' ')}
+                    >
+                      {p.cta}
+                    </motion.button>
+                  </Link>
+
+                  <AnimatePresence>
+                    {yearly && (
+                      <motion.div
+                        initial={{ y: -6, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        exit={{ y: -6, opacity: 0 }}
+                        transition={{ duration: 0.25 }}
+                        className="mt-3 flex items-center justify-center gap-1 text-xs font-semibold text-emerald-200"
+                      >
+                        <BadgePercent className="h-3.5 w-3.5" />
+                        You’re saving 17% vs monthly
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
+
+                <div className="my-6 h-px bg-white/10" />
+
+                <ul className="space-y-3 text-[15px] leading-6">
+                  {p.features.map((f) => (
+                    <li key={f} className="flex items-start gap-3 text-slate-200">
+                      <CheckCircle2 className={`${yearly ? 'text-teal-300/90' : 'text-violet-300/90'} mt-0.5 h-4.5 w-4.5`} />
+                      <span>{f}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="pointer-events-none absolute right-3 top-3 opacity-70">
+                  <Sparkles className={`${yearly ? 'text-teal-300/60' : 'text-violet-300/60'} h-4 w-4`} />
+                </div>
+              </motion.article>
+            );
+          })}
         </div>
+      </div>
     </section>
   );
 }

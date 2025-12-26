@@ -31,9 +31,7 @@ export const metadata: Metadata = {
     title: "SkipIt Digital | AI Marketing Agency",
     description: "Scale with AI-driven Google Ads, Meta Ads, and SEO.",
   },
-  icons: {
-    icon: '/icon.png',
-  },
+
   alternates: {
     canonical: '/',
   },
