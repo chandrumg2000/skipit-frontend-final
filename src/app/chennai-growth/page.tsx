@@ -28,7 +28,7 @@ export default function ChennaiGrowthPage() {
         <main className="min-h-screen bg-white text-slate-900 overflow-x-hidden selection:bg-blue-100 selection:text-blue-900 font-sans">
 
             {/* ================= HERO SECTION ================= */}
-            <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-32 px-6 overflow-hidden">
+            <section className="relative pt-24 lg:pt-32 pb-20 px-6 overflow-hidden">
                 {/* Abstract Background Elements (Light Theme) */}
                 <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-100/60 rounded-full blur-[120px] -z-10 opacity-70" />
                 <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-indigo-100/60 rounded-full blur-[100px] -z-10 opacity-60" />
