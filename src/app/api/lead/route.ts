@@ -35,25 +35,23 @@ export async function POST(req: Request) {
 
         ${plan ? `<p><strong>Selected Plan:</strong> ${plan}</p>` : ''}
 
-        ${
-          selections?.length
-            ? `<div style="margin-top:12px;">
+        ${selections?.length
+        ? `<div style="margin-top:12px;">
                  <strong>Custom Selections:</strong>
                  <ul>${selections.map((s: string) => `<li>${s}</li>`).join('')}</ul>
                </div>`
-            : ''
-        }
+        : ''
+      }
 
-        ${
-          totals
-            ? `<div style="margin-top:12px;">
+        ${totals
+        ? `<div style="margin-top:12px;">
                  <strong>Totals:</strong>
                  <pre style="background:#0b1020; color:#e2e8f0; padding:12px; border-radius:8px;">
 ${JSON.stringify(totals, null, 2)}
                  </pre>
                </div>`
-            : ''
-        }
+        : ''
+      }
 
         <hr style="border:none; height:1px; background:#e2e8f0; margin:16px 0;" />
         <p style="font-size:12px; color:#64748b;">Consent: ${consent ? 'Yes' : 'No'}</p>
