@@ -32,7 +32,7 @@ export default function SEOModal({ isOpen, onClose }: Props) {
     setPdfUrl('');
 
     try {
-      // 1. Send Lead Email
+      // 1. Send Lead Email (This notifies you of the new lead)
       await sendLead({
         name: formData.name,
         email: formData.email,
@@ -43,41 +43,14 @@ export default function SEOModal({ isOpen, onClose }: Props) {
         source: 'SEOAudit'
       });
 
-      // 2. Generate Audit (Backend)
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000';
-      const res = await fetch(`${apiUrl}/generate-audit`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          business: formData.business_name,
-          email: formData.email,
-          phone: formData.phone,
-          domain: formData.url
-        })
-      });
+      // 2. Show Success Message immediately
+      alert(`Thanks ${formData.name}! We've received your request.\n\nYour comprehensive SEO Audit Report will be sent to your inbox shortly.`);
+      onClose();
 
-      if (res.ok) {
-        const blob = await res.blob();
-        const url = window.URL.createObjectURL(blob);
-        setPdfUrl(url);
-
-        // Auto-trigger download
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `skipit-seo-audit-${formData.url.replace(/[^a-z0-9]/gi, '_').toLowerCase()}.pdf`;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-      } else {
-        // Even if audit fails, lead was sent.
-        alert('Request received! We are generating your report. If it fails to download, we will email it to you.');
-      }
     } catch (error) {
       console.error(error);
       alert('Request received! We will email you the report shortly.');
+      onClose();
     } finally {
       setLoading(false);
     }
