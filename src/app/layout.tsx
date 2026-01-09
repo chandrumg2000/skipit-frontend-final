@@ -41,7 +41,7 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
   name: 'SkipIt Digital',
-  image: 'https://skipitdigital.com/icon.png',
+  image: 'https://skipitdigital.com/opengraph-image',
   '@id': 'https://skipitdigital.com',
   url: 'https://skipitdigital.com',
   telephone: '', // Add phone number if available
