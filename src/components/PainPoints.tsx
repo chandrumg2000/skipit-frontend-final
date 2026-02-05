@@ -8,21 +8,21 @@ export default function PainPoints() {
     return (
         <section className="py-24 relative overflow-hidden">
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
-                <div className="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+                <div className="lg:grid lg:grid-cols-2 lg:gap-20 items-center">
 
                     {/* Visual/Image Side */}
-                    <div className="relative mb-12 lg:mb-0">
+                    <div className="relative mb-14 lg:mb-0 w-full">
                         {/* Abstract background blobs for the image */}
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-tr from-rose-500/20 to-orange-500/20 blur-3xl rounded-full -z-10" />
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] bg-gradient-to-tr from-rose-500/20 to-orange-500/20 blur-3xl rounded-full -z-10" />
 
-                        <div className="relative rounded-3xl border border-white/10 bg-white/5 p-2 backdrop-blur-sm">
-                            {/* User's image */}
-                            <div className="aspect-square relative overflow-hidden rounded-2xl bg-[#0F1629] flex items-center justify-center">
+                        <div className="relative rounded-3xl border border-white/10 bg-white/5 p-3 backdrop-blur-sm">
+                            {/* User's image container - Made larger */}
+                            <div className="aspect-[4/3] relative overflow-hidden rounded-2xl bg-[#0F1629] flex items-center justify-center border border-white/5 shadow-2xl">
                                 <Image
-                                    src="/bad-website-example.png"
+                                    src="/bad-website-example.png?v=2"
                                     alt="Example of an outdated and cluttered website"
                                     fill
-                                    className="object-cover opacity-80"
+                                    className="object-cover opacity-90"
                                 />
                             </div>
 
@@ -31,15 +31,15 @@ export default function PainPoints() {
                                 initial={{ x: -20, opacity: 0 }}
                                 whileInView={{ x: 0, opacity: 1 }}
                                 transition={{ delay: 0.3 }}
-                                className="absolute -left-4 top-10 rounded-lg border border-rose-500/30 bg-[#0F1629]/90 p-3 shadow-xl backdrop-blur"
+                                className="absolute -left-6 top-12 rounded-xl border border-rose-500/30 bg-[#0F1629]/95 p-4 shadow-xl backdrop-blur min-w-[180px]"
                             >
-                                <div className="flex items-center gap-3">
-                                    <div className="rounded-full bg-rose-500/20 p-2 text-rose-400">
-                                        <TrendingDown className="h-5 w-5" />
+                                <div className="flex items-center gap-4">
+                                    <div className="rounded-full bg-rose-500/20 p-2.5 text-rose-400">
+                                        <TrendingDown className="h-6 w-6" />
                                     </div>
                                     <div>
-                                        <div className="text-xs text-slate-400">Conversion Rate</div>
-                                        <div className="font-bold text-white text-sm">-45% Drop</div>
+                                        <div className="text-xs text-slate-400 font-medium">Conversion Rate</div>
+                                        <div className="font-bold text-white text-base">-45% Drop</div>
                                     </div>
                                 </div>
                             </motion.div>
@@ -48,15 +48,15 @@ export default function PainPoints() {
                                 initial={{ x: 20, opacity: 0 }}
                                 whileInView={{ x: 0, opacity: 1 }}
                                 transition={{ delay: 0.5 }}
-                                className="absolute -right-4 bottom-10 rounded-lg border border-orange-500/30 bg-[#0F1629]/90 p-3 shadow-xl backdrop-blur"
+                                className="absolute -right-6 bottom-12 rounded-xl border border-orange-500/30 bg-[#0F1629]/95 p-4 shadow-xl backdrop-blur min-w-[170px]"
                             >
-                                <div className="flex items-center gap-3">
-                                    <div className="rounded-full bg-orange-500/20 p-2 text-orange-400">
-                                        <Clock className="h-5 w-5" />
+                                <div className="flex items-center gap-4">
+                                    <div className="rounded-full bg-orange-500/20 p-2.5 text-orange-400">
+                                        <Clock className="h-6 w-6" />
                                     </div>
                                     <div>
-                                        <div className="text-xs text-slate-400">Load Time</div>
-                                        <div className="font-bold text-white text-sm">Slow & Laggy</div>
+                                        <div className="text-xs text-slate-400 font-medium">Load Time</div>
+                                        <div className="font-bold text-white text-base">Slow & Laggy</div>
                                     </div>
                                 </div>
                             </motion.div>
@@ -91,10 +91,10 @@ export default function PainPoints() {
                                     transition={{ delay: i * 0.1 }}
                                     className="flex items-start gap-4"
                                 >
-                                    <div className="flex-shrink-0 mt-1">
-                                        <div className="h-2 w-2 rounded-full bg-rose-400 mt-2 shadow-[0_0_10px_rgba(251,113,133,0.5)]" />
+                                    <div className="flex-shrink-0 mt-1.5">
+                                        <div className="h-2 w-2 rounded-full bg-rose-400 shadow-[0_0_10px_rgba(251,113,133,0.5)]" />
                                     </div>
-                                    <span className="text-lg text-slate-300">{item}</span>
+                                    <span className="text-lg text-slate-300 leading-snug">{item}</span>
                                 </motion.li>
                             ))}
                         </ul>
