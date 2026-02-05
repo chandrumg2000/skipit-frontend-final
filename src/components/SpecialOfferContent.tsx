@@ -77,7 +77,10 @@ export default function SpecialOfferContent() {
                 </div>
 
                 {/* Pain Points Section */}
-                <PainPoints />
+                {/* Pain Points Section */}
+                <div className="mt-24 sm:mt-32">
+                    <PainPoints />
+                </div>
 
                 {/* Features Grid */}
                 <motion.div
