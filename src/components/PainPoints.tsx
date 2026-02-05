@@ -19,7 +19,7 @@ export default function PainPoints() {
                             {/* User's image container - Made larger */}
                             <div className="aspect-[4/3] relative overflow-hidden rounded-2xl bg-[#0F1629] flex items-center justify-center border border-white/5 shadow-2xl">
                                 <Image
-                                    src="/bad-website-example.png?v=2"
+                                    src="/bad-website-example.png"
                                     alt="Example of an outdated and cluttered website"
                                     fill
                                     className="object-cover opacity-90"
