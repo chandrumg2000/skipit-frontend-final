@@ -3,6 +3,9 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Code, FileText, Globe, Layers, CheckCircle, Sparkles } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
+import IndustryTabs from './IndustryTabs';
+import PainPoints from './PainPoints';
 
 export default function SpecialOfferContent() {
     return (
@@ -68,7 +71,13 @@ export default function SpecialOfferContent() {
                             <div className="absolute inset-0 bg-gradient-to-r from-cyan-300 via-fuchsia-300 to-cyan-300 opacity-0 transition-opacity duration-300 group-hover:opacity-20" />
                         </Link>
                     </motion.div>
+
+                    {/* Hero Image */}
+
                 </div>
+
+                {/* Pain Points Section */}
+                <PainPoints />
 
                 {/* Features Grid */}
                 <motion.div
@@ -104,6 +113,9 @@ export default function SpecialOfferContent() {
                         />
                     </div>
                 </motion.div>
+
+                {/* Industry Tabs Section */}
+                <IndustryTabs />
 
                 {/* Trust/Guarantee Section */}
                 <motion.div
