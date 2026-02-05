@@ -1,10 +1,20 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, Suspense } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { sendLead } from '@/lib/sendLead';
 import { MapPin, Instagram, Facebook, Linkedin, Mail, Phone } from 'lucide-react';
 
 export default function ContactForm() {
+  return (
+    <Suspense fallback={<div className="h-[600px] w-full animate-pulse rounded-2xl bg-white/5" />}>
+      <ContactFormContent />
+    </Suspense>
+  );
+}
+
+function ContactFormContent() {
+  const searchParams = useSearchParams();
   const [form, setForm] = useState({
     name: '',
     email: '',
@@ -14,6 +24,17 @@ export default function ContactForm() {
     consent: false,
     honeypot: '',
   });
+
+  useEffect(() => {
+    const offer = searchParams.get('offer');
+    if (offer === 'special-150') {
+      setForm(prev => ({
+        ...prev,
+        message: 'I am interested in the Special Website Offer for €150. Please tell me more!'
+      }));
+    }
+  }, [searchParams]);
+
   const [loading, setLoading] = useState(false);
   const [ok, setOk] = useState<null | boolean>(null);
   const [error, setError] = useState<string | null>(null);
