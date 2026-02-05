@@ -8,16 +8,16 @@ export default function PainPoints() {
     return (
         <section className="py-24 relative overflow-hidden">
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
-                <div className="lg:grid lg:grid-cols-2 lg:gap-20 items-center">
+                <div className="lg:grid lg:grid-cols-2 lg:gap-20 items-stretch">
 
                     {/* Visual/Image Side */}
-                    <div className="relative mb-14 lg:mb-0 w-full">
+                    <div className="relative mb-14 lg:mb-0 w-full h-full">
                         {/* Abstract background blobs for the image */}
                         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] bg-gradient-to-tr from-rose-500/20 to-orange-500/20 blur-3xl rounded-full -z-10" />
 
-                        <div className="relative rounded-3xl border border-white/10 bg-white/5 p-3 backdrop-blur-sm">
-                            {/* User's image container - Made larger */}
-                            <div className="aspect-[4/3] relative overflow-hidden rounded-2xl bg-[#0F1629] flex items-center justify-center border border-white/5 shadow-2xl">
+                        <div className="relative h-full rounded-3xl border border-white/10 bg-white/5 p-3 backdrop-blur-sm flex flex-col">
+                            {/* User's image container - Fills height to match text */}
+                            <div className="relative w-full flex-grow min-h-[450px] overflow-hidden rounded-2xl bg-[#0F1629] border border-white/5 shadow-2xl">
                                 <Image
                                     src="/bad-website-example.png"
                                     alt="Example of an outdated and cluttered website"
@@ -64,7 +64,7 @@ export default function PainPoints() {
                     </div>
 
                     {/* Content Side */}
-                    <div>
+                    <div className="flex flex-col justify-center">
                         <motion.h2
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
