@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, PlayCircle, Sparkles } from 'lucide-react';
 import AIWave from './AIWave';
-import HeroContactForm from './HeroContactForm';
+
 
 type Props = { setShowModal?: (v: boolean) => void };
 
@@ -33,9 +33,9 @@ export default function Hero({ setShowModal }: Props) {
 
       {/* Content */}
       <div className="relative z-10 mx-auto max-w-7xl px-6 pt-24 pb-12 sm:pt-32 md:pt-48 md:pb-24">
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-8 items-center">
+        <div className="flex flex-col items-center justify-center text-center">
           {/* Left Column: Text & CTAs */}
-          <div className="flex flex-col items-start text-left">
+          <div className="mx-auto max-w-6xl flex flex-col items-center text-center">
             {/* Micro badge */}
             <motion.div
               initial={{ y: -8, opacity: 0 }}
@@ -54,9 +54,10 @@ export default function Hero({ setShowModal }: Props) {
               initial={{ y: 14, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.55, ease: 'easeOut' }}
-              className="max-w-3xl text-4xl font-extrabold leading-[1.1] tracking-tight sm:text-6xl md:text-[4rem] text-white"
+              className="max-w-5xl text-4xl font-extrabold leading-[1.1] tracking-tight sm:text-6xl md:text-[4rem] text-white"
             >
               Grow Faster with{' '}
+              <br className="hidden md:block" />
               <span className="relative inline-block">
                 <span className="bg-gradient-to-r from-violet-300 via-fuchsia-300 to-cyan-300 bg-clip-text text-transparent">
                   Proven Digital
@@ -86,7 +87,7 @@ export default function Hero({ setShowModal }: Props) {
               initial={{ y: 12, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.45, delay: 0.12 }}
-              className="mt-10 flex w-full flex-col items-start gap-4 sm:flex-row"
+              className="mt-10 flex w-full flex-col items-center justify-center gap-4 sm:flex-row"
             >
               <button
                 onClick={() => setShowModal?.(true)}
@@ -110,7 +111,7 @@ export default function Hero({ setShowModal }: Props) {
               initial={{ y: 10, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.45, delay: 0.18 }}
-              className="mt-12 grid max-w-2xl grid-cols-1 gap-6 text-left sm:grid-cols-3 w-full"
+              className="mt-8 grid max-w-2xl grid-cols-1 gap-6 text-center mx-auto sm:grid-cols-3 w-full"
             >
               <Stat kpi="98%" label="Client Satisfaction" />
               <Stat kpi="3.2x" label="Average ROI" />
@@ -118,15 +119,7 @@ export default function Hero({ setShowModal }: Props) {
             </motion.ul>
           </div>
 
-          {/* Right Column: Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="w-full max-w-md mx-auto lg:mx-0 lg:ml-auto"
-          >
-            <HeroContactForm />
-          </motion.div>
+
         </div>
       </div>
 
