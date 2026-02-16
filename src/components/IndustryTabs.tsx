@@ -93,20 +93,43 @@ export default function IndustryTabs() {
         <section className="py-24 sm:py-32">
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
 
-                {/* Mobile Dropdown (visible on small screens) */}
-                <div className="md:hidden mb-8">
-                    <label htmlFor="tabs" className="sr-only">Select your industry</label>
-                    <select
-                        id="tabs"
-                        name="tabs"
-                        className="block w-full rounded-md border-gray-700 bg-white/5 py-3 pl-3 pr-10 text-white focus:border-cyan-500 focus:outline-none focus:ring-cyan-500 sm:text-sm"
-                        value={activeTab.id}
-                        onChange={(e) => setActiveTab(industries.find(i => i.id === e.target.value) || industries[0])}
-                    >
-                        {industries.map((tab) => (
-                            <option key={tab.id} value={tab.id}>{tab.label}</option>
-                        ))}
-                    </select>
+                {/* Mobile Carousel (visible on small screens) */}
+                <div className="md:hidden mt-8 -mx-6 px-6 overflow-x-auto no-scrollbar snap-x snap-mandatory flex gap-4 pb-8">
+                    {industries.map((ind) => (
+                        <div key={ind.id} className="snap-center min-w-[85vw] sm:min-w-[600px] flex-shrink-0 relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 flex flex-col h-full">
+                            <div className="relative aspect-[16/9] w-full bg-slate-800">
+                                <Image
+                                    src={`/images/${ind.id}.jpeg`}
+                                    alt={ind.label}
+                                    fill
+                                    className="object-cover"
+                                />
+                            </div>
+                            <div className="flex-1 p-6 flex flex-col">
+                                <div className="flex items-center gap-2 mb-3">
+                                    <ind.icon className="h-5 w-5 text-cyan-400" />
+                                    <span className="text-sm font-semibold text-cyan-400 uppercase tracking-wider">{ind.label}</span>
+                                </div>
+                                <h3 className="text-xl font-bold text-white mb-4 line-clamp-2">
+                                    {ind.title}
+                                </h3>
+                                <ul className="mb-6 space-y-3 flex-1">
+                                    {ind.points.map((point, i) => (
+                                        <li key={i} className="flex items-start gap-3">
+                                            <div className={`mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gradient-to-r ${ind.color}`} />
+                                            <span className="text-sm text-slate-300">{point}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                                <a
+                                    href={`/contact?offer=${ind.id}`}
+                                    className={`mt-auto block w-full text-center rounded-xl bg-gradient-to-r ${ind.color} px-6 py-3 text-sm font-bold text-white transition hover:brightness-110`}
+                                >
+                                    {ind.cta}
+                                </a>
+                            </div>
+                        </div>
+                    ))}
                 </div>
 
                 {/* Desktop Tabs (hidden on mobile) */}
@@ -135,8 +158,8 @@ export default function IndustryTabs() {
                     </div>
                 </div>
 
-                {/* Content Area */}
-                <div className="mt-12 md:mt-16">
+                {/* Content Area (Desktop Only) */}
+                <div className="mt-12 md:mt-16 hidden md:block">
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={activeTab.id}
