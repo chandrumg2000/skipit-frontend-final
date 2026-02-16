@@ -40,7 +40,7 @@ export default function Navbar() {
         ? (isLightPage
             ? 'bg-white/80 backdrop-blur-md border-b border-slate-200 py-4 shadow-sm'
             : 'bg-[#0b1020]/80 backdrop-blur-md border-b border-white/10 py-4 shadow-lg shadow-cyan-900/5')
-        : 'bg-transparent py-6';
+        : 'bg-transparent py-4 md:py-6';
 
     return (
         <>

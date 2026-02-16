@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Building2, Utensils, Wrench, Briefcase, ArrowRight, CheckCircle2, Hammer, Wind } from 'lucide-react';
 import Image from 'next/image';
@@ -88,13 +88,47 @@ const industries = [
 
 export default function IndustryTabs() {
     const [activeTab, setActiveTab] = useState(industries[0]);
+    const [mobileActiveIndex, setMobileActiveIndex] = useState(0);
+    const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+    const handleScroll = () => {
+        if (scrollContainerRef.current) {
+            const container = scrollContainerRef.current;
+            // Get all children (cards)
+            const cards = Array.from(container.children);
+
+            // Find the card closest to the center of the container
+            const containerRect = container.getBoundingClientRect();
+            const containerCenter = containerRect.left + containerRect.width / 2;
+
+            let closestIndex = 0;
+            let minDistance = Number.MAX_VALUE;
+
+            cards.forEach((card, index) => {
+                const rect = card.getBoundingClientRect();
+                const cardCenter = rect.left + rect.width / 2;
+                const distance = Math.abs(containerCenter - cardCenter);
+
+                if (distance < minDistance) {
+                    minDistance = distance;
+                    closestIndex = index;
+                }
+            });
+
+            setMobileActiveIndex(closestIndex);
+        }
+    };
 
     return (
         <section className="py-24 sm:py-32">
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
 
                 {/* Mobile Carousel (visible on small screens) */}
-                <div className="md:hidden mt-8 -mx-6 px-6 overflow-x-auto no-scrollbar snap-x snap-mandatory flex gap-4 pb-8">
+                <div
+                    ref={scrollContainerRef}
+                    onScroll={handleScroll}
+                    className="md:hidden mt-8 -mx-6 px-6 overflow-x-auto no-scrollbar snap-x snap-mandatory flex gap-4 pb-8"
+                >
                     {industries.map((ind) => (
                         <div key={ind.id} className="snap-center min-w-[85vw] sm:min-w-[600px] flex-shrink-0 relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 flex flex-col h-full">
                             <div className="relative aspect-[16/9] w-full bg-slate-800">
@@ -129,6 +163,19 @@ export default function IndustryTabs() {
                                 </a>
                             </div>
                         </div>
+                    ))}
+                </div>
+
+                {/* Mobile Pagination Dots */}
+                <div className="md:hidden flex justify-center gap-2 mb-12">
+                    {industries.map((_, index) => (
+                        <div
+                            key={index}
+                            className={`h-2 rounded-full transition-all duration-300 ${index === mobileActiveIndex
+                                    ? 'w-8 bg-cyan-400'
+                                    : 'w-2 bg-white/20'
+                                }`}
+                        />
                     ))}
                 </div>
 

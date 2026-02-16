@@ -35,7 +35,7 @@ export default function Hero({ setShowModal }: Props) {
       <div className="relative z-10 mx-auto max-w-7xl px-6 pt-24 pb-12 sm:pt-32 md:pt-48 md:pb-24">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-8 items-center">
           {/* Left Column: Text & CTAs */}
-          <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
+          <div className="flex flex-col items-start text-left">
             {/* Micro badge */}
             <motion.div
               initial={{ y: -8, opacity: 0 }}
@@ -86,11 +86,11 @@ export default function Hero({ setShowModal }: Props) {
               initial={{ y: 12, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.45, delay: 0.12 }}
-              className="mt-10 flex w-full flex-col items-center lg:items-start gap-4 sm:flex-row"
+              className="mt-10 flex w-full flex-col items-start gap-4 sm:flex-row"
             >
               <button
                 onClick={() => setShowModal?.(true)}
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-400 to-cyan-400 px-8 py-4 text-sm font-bold text-black shadow-[0_10px_30px_rgba(34,211,238,0.25)] transition hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
+                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-400 to-cyan-400 px-8 py-4 text-sm font-bold text-black shadow-[0_10px_30px_rgba(34,211,238,0.25)] transition hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
               >
                 Generate Free SEO Audit
                 <ArrowRight className="h-4.5 w-4.5" />
@@ -98,7 +98,7 @@ export default function Hero({ setShowModal }: Props) {
 
               <a
                 href="#case-studies"
-                className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/12 bg-white/5 px-8 py-4 text-sm font-semibold text-white shadow-none hover:bg-white/10 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fuchsia-300"
+                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl border border-white/12 bg-white/5 px-8 py-4 text-sm font-semibold text-white shadow-none hover:bg-white/10 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fuchsia-300"
               >
                 <PlayCircle className="h-5 w-5 text-fuchsia-300" />
                 Watch Demo
@@ -110,7 +110,7 @@ export default function Hero({ setShowModal }: Props) {
               initial={{ y: 10, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.45, delay: 0.18 }}
-              className="mt-12 grid max-w-2xl grid-cols-1 gap-6 text-center sm:grid-cols-3 lg:text-left w-full"
+              className="mt-12 grid max-w-2xl grid-cols-1 gap-6 text-left sm:grid-cols-3 w-full"
             >
               <Stat kpi="98%" label="Client Satisfaction" />
               <Stat kpi="3.2x" label="Average ROI" />
