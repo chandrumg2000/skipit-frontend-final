@@ -8,6 +8,7 @@ import { Menu, X, ChevronRight } from 'lucide-react';
 
 const globalNavLinks = [
     { name: 'Home', href: '/' },
+    { name: 'Website Offer', href: '/special-offer' },
     { name: 'Services', href: '/#services' },
     { name: 'About Us', href: '/#about' },
     { name: 'Contact Us', href: '/contact' },

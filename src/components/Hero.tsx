@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, PlayCircle, Sparkles } from 'lucide-react';
 import AIWave from './AIWave';
+import HeroContactForm from './HeroContactForm';
 
 type Props = { setShowModal?: (v: boolean) => void };
 
@@ -32,86 +33,101 @@ export default function Hero({ setShowModal }: Props) {
 
       {/* Content */}
       <div className="relative z-10 mx-auto max-w-7xl px-6 pt-24 pb-12 sm:pt-32 md:pt-48 md:pb-24">
-        {/* Micro badge */}
-        <motion.div
-          initial={{ y: -8, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.45 }}
-          className="mx-auto mb-6 w-fit rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-300 backdrop-blur shadow-none"
-        >
-          <span className="inline-flex items-center gap-1">
-            <Sparkles className="h-3.5 w-3.5 text-cyan-300" />
-            AI-assisted, revenue-first marketing
-          </span>
-        </motion.div>
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-8 items-center">
+          {/* Left Column: Text & CTAs */}
+          <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
+            {/* Micro badge */}
+            <motion.div
+              initial={{ y: -8, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.45 }}
+              className="mb-6 w-fit rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-300 backdrop-blur shadow-none"
+            >
+              <span className="inline-flex items-center gap-1">
+                <Sparkles className="h-3.5 w-3.5 text-cyan-300" />
+                AI-assisted, revenue-first marketing
+              </span>
+            </motion.div>
 
-        {/* Headline + shimmer overlay */}
-        <motion.h1
-          initial={{ y: 14, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.55, ease: 'easeOut' }}
-          className="mx-auto max-w-6xl text-center text-4xl font-extrabold leading-[1.1] tracking-tight sm:text-6xl md:text-[4.25rem] text-white"
-        >
-          Grow Faster with{' '}
-          <span className="relative inline-block">
-            <span className="bg-gradient-to-r from-violet-300 via-fuchsia-300 to-cyan-300 bg-clip-text text-transparent">
-              Proven Digital
-            </span>
-            <div><Shimmer /></div>
-          </span>{' '}
-          Marketing{' '}
-          <span className="bg-gradient-to-r from-cyan-300 via-sky-300 to-emerald-300 bg-clip-text text-transparent">
-            Strategies
-          </span>
-          .
-        </motion.h1>
+            {/* Headline + shimmer overlay */}
+            <motion.h1
+              initial={{ y: 14, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.55, ease: 'easeOut' }}
+              className="max-w-3xl text-4xl font-extrabold leading-[1.1] tracking-tight sm:text-6xl md:text-[4rem] text-white"
+            >
+              Grow Faster with{' '}
+              <span className="relative inline-block">
+                <span className="bg-gradient-to-r from-violet-300 via-fuchsia-300 to-cyan-300 bg-clip-text text-transparent">
+                  Proven Digital
+                </span>
+                <div><Shimmer /></div>
+              </span>{' '}
+              Marketing{' '}
+              <span className="bg-gradient-to-r from-cyan-300 via-sky-300 to-emerald-300 bg-clip-text text-transparent">
+                Strategies
+              </span>
+              .
+            </motion.h1>
 
-        {/* Subhead */}
-        <motion.p
-          initial={{ y: 12, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.45, delay: 0.05 }}
-          className="mx-auto mt-6 max-w-2xl text-center text-lg text-slate-300"
-        >
-          We blend performance strategy with rapid creative testing to lower CAC, grow qualified traffic,
-          and turn clicks into customers.
-        </motion.p>
+            {/* Subhead */}
+            <motion.p
+              initial={{ y: 12, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.45, delay: 0.05 }}
+              className="mt-6 max-w-xl text-lg text-slate-300"
+            >
+              We blend performance strategy with rapid creative testing to lower CAC, grow qualified traffic,
+              and turn clicks into customers.
+            </motion.p>
 
-        {/* CTAs */}
-        <motion.div
-          initial={{ y: 12, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.45, delay: 0.12 }}
-          className="mx-auto mt-10 flex w-full flex-col items-center justify-center gap-4 sm:flex-row"
-        >
-          <button
-            onClick={() => setShowModal?.(true)}
-            className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-400 to-cyan-400 px-8 py-4 text-sm font-bold text-black shadow-[0_10px_30px_rgba(34,211,238,0.25)] transition hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
+            {/* CTAs */}
+            <motion.div
+              initial={{ y: 12, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.45, delay: 0.12 }}
+              className="mt-10 flex w-full flex-col items-center lg:items-start gap-4 sm:flex-row"
+            >
+              <button
+                onClick={() => setShowModal?.(true)}
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-400 to-cyan-400 px-8 py-4 text-sm font-bold text-black shadow-[0_10px_30px_rgba(34,211,238,0.25)] transition hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
+              >
+                Generate Free SEO Audit
+                <ArrowRight className="h-4.5 w-4.5" />
+              </button>
+
+              <a
+                href="#case-studies"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/12 bg-white/5 px-8 py-4 text-sm font-semibold text-white shadow-none hover:bg-white/10 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fuchsia-300"
+              >
+                <PlayCircle className="h-5 w-5 text-fuchsia-300" />
+                Watch Demo
+              </a>
+            </motion.div>
+
+            {/* Stats */}
+            <motion.ul
+              initial={{ y: 10, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.45, delay: 0.18 }}
+              className="mt-12 grid max-w-2xl grid-cols-1 gap-6 text-center sm:grid-cols-3 lg:text-left w-full"
+            >
+              <Stat kpi="98%" label="Client Satisfaction" />
+              <Stat kpi="3.2x" label="Average ROI" />
+              <Stat kpi="150+" label="Projects Completed" />
+            </motion.ul>
+          </div>
+
+          {/* Right Column: Contact Form */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="w-full max-w-md mx-auto lg:mx-0 lg:ml-auto"
           >
-            Generate Free SEO Audit
-            <ArrowRight className="h-4.5 w-4.5" />
-          </button>
-
-          <a
-            href="#case-studies"
-            className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/12 bg-white/5 px-8 py-4 text-sm font-semibold text-white shadow-none hover:bg-white/10 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fuchsia-300"
-          >
-            <PlayCircle className="h-5 w-5 text-fuchsia-300" />
-            Watch Demo
-          </a>
-        </motion.div>
-
-        {/* Stats */}
-        <motion.ul
-          initial={{ y: 10, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.45, delay: 0.18 }}
-          className="mx-auto mt-16 grid max-w-4xl grid-cols-1 gap-6 text-center sm:grid-cols-3"
-        >
-          <Stat kpi="98%" label="Client Satisfaction" />
-          <Stat kpi="3.2x" label="Average ROI" />
-          <Stat kpi="150+" label="Projects Completed" />
-        </motion.ul>
+            <HeroContactForm />
+          </motion.div>
+        </div>
       </div>
 
       {/* Subtle bottom fade */}

@@ -2,22 +2,22 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Building2, Utensils, Wrench, Package, ShoppingBag, Briefcase, Scale, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { Building2, Utensils, Wrench, Briefcase, ArrowRight, CheckCircle2, Hammer, Wind } from 'lucide-react';
 import Image from 'next/image';
 
 const industries = [
     {
-        id: 'real-estate',
-        label: 'Real Estate',
-        icon: Building2,
-        title: 'Showcase properties. Build trust. Win more clients.',
+        id: 'plumbing',
+        label: 'Plumbing',
+        icon: Wrench,
+        title: 'Get more emergency calls. Book appointments.',
         points: [
-            'Post new listings across all platforms instantly',
-            'Share client testimonials and market updates',
-            'Track which content generates the most inquiries'
+            'Highlight your emergency services clearly',
+            'Allow customers to book appointments online',
+            'Showcase before and after project photos'
         ],
-        cta: 'Get Real Estate Plan',
-        color: 'from-cyan-400 to-blue-500'
+        cta: 'Get Plumbing Plan',
+        color: 'from-blue-400 to-indigo-500'
     },
     {
         id: 'restaurants',
@@ -33,30 +33,43 @@ const industries = [
         color: 'from-orange-400 to-red-500'
     },
     {
-        id: 'services',
-        label: 'Plumbing & HVAC',
-        icon: Wrench,
-        title: 'Get more emergency calls. Book appointments.',
+        id: 'home-improvement',
+        label: 'Home Improvement',
+        icon: Hammer,
+        title: 'Showcase your craftsmanship. Inspire homeowners.',
         points: [
-            'Highlight your services and areas of operation',
-            'Allow customers to book appointments online',
-            'Showcase before and after project photos'
+            'Gallery of renovation projects and transformations',
+            'Request a quote forms for easy lead capture',
+            'Client testimonials and service area maps'
         ],
-        cta: 'Get Service Plan',
-        color: 'from-blue-400 to-indigo-500'
+        cta: 'Get Renovation Plan',
+        color: 'from-amber-400 to-orange-500'
     },
     {
-        id: 'ecommerce',
-        label: 'Ecommerce',
-        icon: ShoppingBag,
-        title: 'Sell more products. Retain customers. Scale fast.',
+        id: 'hvac',
+        label: 'HVAC',
+        icon: Wind,
+        title: 'Comfort for your clients. Growth for you.',
         points: [
-            'Showcase your product catalog beautifully',
-            'Integrate secure payment gateways',
-            'Run seamless promotional campaigns'
+            'Seasonal promotion strategies for heating/cooling',
+            'Maintenance plan subscription sign-ups',
+            'Trust-building certifications display'
         ],
-        cta: 'Get Ecommerce Plan',
-        color: 'from-pink-400 to-rose-500'
+        cta: 'Get HVAC Plan',
+        color: 'from-cyan-400 to-sky-500'
+    },
+    {
+        id: 'real-estate',
+        label: 'Real Estate',
+        icon: Building2,
+        title: 'Showcase properties. Build trust. Win more clients.',
+        points: [
+            'Post new listings across all platforms instantly',
+            'Share client testimonials and market updates',
+            'Track which content generates the most inquiries'
+        ],
+        cta: 'Get Real Estate Plan',
+        color: 'from-indigo-400 to-violet-500'
     },
     {
         id: 'consultants',
@@ -98,14 +111,14 @@ export default function IndustryTabs() {
 
                 {/* Desktop Tabs (hidden on mobile) */}
                 <div className="hidden md:block">
-                    <div className="flex w-full items-center justify-center gap-x-8 border-b border-white/10 pb-4">
+                    <div className="flex w-full items-center justify-center gap-x-8 border-b border-white/10 pb-4 overflow-x-auto">
                         {industries.map((tab) => {
                             const isActive = activeTab.id === tab.id;
                             return (
                                 <button
                                     key={tab.id}
                                     onClick={() => setActiveTab(tab)}
-                                    className={`group flex items-center gap-2 px-1 pb-4 text-sm font-medium transition-all ${isActive ? 'text-white' : 'text-slate-400 hover:text-slate-200'
+                                    className={`group flex items-center gap-2 px-1 pb-4 text-sm font-medium transition-all whitespace-nowrap ${isActive ? 'text-white' : 'text-slate-400 hover:text-slate-200'
                                         } relative`}
                                 >
                                     <tab.icon className={`h-5 w-5 ${isActive ? 'text-cyan-400' : 'text-slate-500 group-hover:text-slate-300'}`} />
@@ -141,8 +154,6 @@ export default function IndustryTabs() {
                                 <ul className="mt-8 space-y-5">
                                     {activeTab.points.map((point, index) => (
                                         <li key={index} className="flex items-start gap-3">
-                                            <CheckCircle2 className={`h-6 w-6 shrink-0 bg-gradient-to-r ${activeTab.color} bg-clip-text text-transparent`} />
-                                            {/* Note: bg-clip-text doesn't work on SVGs directly usually, so let's fallback to coloring the text-cyan-400 or using a div wrapper if needed. tailored color below. */}
                                             <div className="flex h-6 w-6 items-center justify-center rounded-full bg-white/5">
                                                 <motion.div
                                                     className={`h-2.5 w-2.5 rounded-full bg-gradient-to-r ${activeTab.color}`}
@@ -165,27 +176,12 @@ export default function IndustryTabs() {
 
                             {/* Image Placeholder */}
                             <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm lg:aspect-[16/10]">
-                                {/* This is where you put your image */}
-                                <div className="flex h-full w-full items-center justify-center flex-col gap-4 p-8 text-center">
-                                    <div className={`h-20 w-20 rounded-2xl bg-gradient-to-br ${activeTab.color} opacity-20 flex items-center justify-center`}>
-                                        <activeTab.icon className="h-10 w-10 text-white opacity-80" />
-                                    </div>
-                                    <p className="text-slate-400">
-                                        <span className="font-semibold text-white">Image Slot:</span> {activeTab.label} Dashboard/Preview
-                                    </p>
-                                    <p className="text-xs text-slate-500">
-                                        (Place your specific "{activeTab.id}.png" image here)
-                                    </p>
-                                </div>
-
-                                {/* Optional: if you have images, uncomment this:
-                <Image 
-                    src={`/images/${activeTab.id}.png`} 
-                    alt={activeTab.label}
-                    fill
-                    className="object-cover"
-                /> 
-                */}
+                                <Image
+                                    src={`/images/${activeTab.id}.jpeg`}
+                                    alt={activeTab.label}
+                                    fill
+                                    className="object-cover"
+                                />
                             </div>
                         </motion.div>
                     </AnimatePresence>

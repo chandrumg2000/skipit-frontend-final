@@ -6,7 +6,7 @@ export type LeadPayload = {
   company?: string;
   message?: string;
   consent: boolean;
-  source?: 'FooterForm' | 'ContactPage' | 'PricingBuilder' | 'PlanCard' | 'SEOAudit';
+  source?: 'FooterForm' | 'ContactPage' | 'PricingBuilder' | 'PlanCard' | 'SEOAudit' | 'HeroForm' | 'SpecialOfferForm';
   plan?: string;
   selections?: string[];
   totals?: {
